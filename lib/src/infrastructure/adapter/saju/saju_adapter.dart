@@ -21,7 +21,7 @@ class SajuAdapter implements SajuPort {
 
   @override
   Future<DailyFortune> getDailyFortune() async {
-    final userInfo = _userStorage.getUserInfo();
+    final userInfo = await _userStorage.getUserInfo();
     if (userInfo == null) {
       throw Exception('User info not found');
     }
@@ -44,7 +44,7 @@ class SajuAdapter implements SajuPort {
 
   @override
   Future<YearlyFortune> getYearlyFortune() async {
-    final userInfo = _userStorage.getUserInfo();
+    final userInfo = await _userStorage.getUserInfo();
     if (userInfo == null) {
       throw Exception('User info not found');
     }
