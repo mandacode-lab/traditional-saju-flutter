@@ -21,7 +21,7 @@ class YearlyFortunePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope<void>(
       canPop: false,
-      onPopInvokedWithResult: (didPop, result) async {
+      onPopInvokedWithResult: (didPop, Object? result) async {
         if (!didPop) {
           await showDialog<bool>(
             context: context,
