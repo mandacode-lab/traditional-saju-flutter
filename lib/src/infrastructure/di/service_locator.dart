@@ -19,6 +19,8 @@ import 'package:traditional_saju/src/infrastructure/adapter/user/user_adapter.da
 import 'package:traditional_saju/src/infrastructure/client/api_client.dart';
 import 'package:traditional_saju/src/infrastructure/oauth/google_oauth_helper.dart';
 import 'package:traditional_saju/src/infrastructure/oauth/kakao_oauth_helper.dart';
+import 'package:traditional_saju/src/infrastructure/storage/drift/database.dart';
+import 'package:traditional_saju/src/infrastructure/storage/storage_initializer.dart';
 import 'package:traditional_saju/src/infrastructure/storage/token_storage_service.dart';
 import 'package:traditional_saju/src/infrastructure/storage/user_storage_service.dart';
 import 'package:traditional_saju/src/presentation/features/auth/bloc/auth_bloc.dart';
@@ -39,6 +41,9 @@ Future<void> setupServiceLocator() async {
     () => const FlutterSecureStorage(),
   );
 
+  // Initialize Drift Database
+  await StorageInitializer.initialize();
+
   // Storage services
   getIt.registerLazySingleton<TokenStorageService>(
     () => TokenStorageService(
@@ -46,11 +51,8 @@ Future<void> setupServiceLocator() async {
     ),
   );
   getIt.registerLazySingleton<UserStorageService>(
-    () => UserStorageService(boxName: 'user_info'),
+    () => UserStorageService(database: AppDatabase.instance),
   );
-
-  // Initialize UserStorageService
-  await getIt<UserStorageService>().init();
 
   // HTTP Client
   getIt.registerLazySingleton<ApiClient>(

@@ -9,6 +9,7 @@ environment:
 dependencies:
   bloc: ^9.2.0
   dio: ^5.9.1
+  drift: ^2.24.2
   equatable: ^2.0.8
   flutter:
     sdk: flutter
@@ -21,18 +22,20 @@ dependencies:
   get_it: ^9.2.0
   go_router: ^17.1.0
   google_sign_in: ^7.2.0
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
   intl: ^0.20.2
   kakao_flutter_sdk: ^1.10.0
   logger: ^2.6.2
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  sqlite3: ^2.4.6
+  sqlite3_flutter_libs: ^0.5.26
 
 dev_dependencies:
-  bloc_test: ^10.0.0
+  bloc_test: '>=10.0.0 <12.0.0'
   build_runner: ^2.4.13
+  drift_dev: ^2.24.2
   flutter_test:
     sdk: flutter
-  hive_generator: ^2.0.1
   mocktail: ^1.0.4
   very_good_analysis: ^10.1.0
 
