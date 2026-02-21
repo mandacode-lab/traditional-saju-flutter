@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:traditional_saju/src/infrastructure/di/service_locator.dart';
-import 'package:traditional_saju/src/infrastructure/storage/storage_initializer.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -29,10 +28,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
-  // Initialize storage (Hive)
-  await StorageInitializer.initialize();
-
-  // Initialize dependency injection
+  // Initialize dependency injection (Drift DB is initialized inside)
   await setupServiceLocator();
 
   runApp(await builder());

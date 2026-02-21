@@ -1,9 +1,11 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:traditional_saju/src/infrastructure/storage/hive_models/user_info_hive.dart';
+import 'package:traditional_saju/src/infrastructure/storage/drift/database.dart';
 
 class StorageInitializer {
   static Future<void> initialize() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(UserInfoHiveAdapter());
+    await AppDatabase.initialize();
+  }
+
+  static Future<void> close() async {
+    await AppDatabase.closeDatabase();
   }
 }

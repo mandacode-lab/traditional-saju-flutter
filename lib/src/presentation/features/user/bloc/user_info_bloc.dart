@@ -30,7 +30,7 @@ class UserInfoBloc extends Bloc<UserInfoEvent, UserInfoState> {
   ) async {
     emit(state.copyWith(status: UserInfoStatus.loading));
     try {
-      final userInfo = _userStorage.getUserInfo();
+      final userInfo = await _userStorage.getUserInfo();
       if (userInfo != null) {
         emit(
           state.copyWith(
