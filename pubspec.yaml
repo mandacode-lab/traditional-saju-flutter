@@ -27,7 +27,7 @@ dependencies:
   logger: ^2.6.2
   path: ^1.9.0
   path_provider: ^2.1.5
-  sqlite3: ^2.4.6
+  sqlite3: ^3.1.6
   sqlite3_flutter_libs: ^0.5.26
 
 dev_dependencies:
